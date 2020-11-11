@@ -1,0 +1,90 @@
+// Evan Cammack
+// CISP 360 - B107, MW 4:30-6:20pm
+//Assignment #9 part 1 - Selection/Bubble Sorting
+//************************************************************************************************************
+
+#include <iostream>
+using namespace std;
+
+void showArray(int[], int);
+void bubSort(int[], int);
+void selSort(int[], int);
+
+int main()
+{
+  int values[] = {3, 11, 8, 5, 24, 32, 17, 43};
+  int second_values[] = {3, 11, 8, 5, 24, 32, 17, 43};
+
+  //const int SIZE = 8;
+
+  cout << "\nThe unsorted values for the first array are: \n";
+  showArray(values, 8);
+  bubSort(values, 8);
+  
+  cout << "\nThe unsorted values for the second array are: \n";
+  showArray(second_values, 8);
+  selSort(second_values, 8);  
+  return 0;
+}
+
+void showArray(int values[], int SIZE)
+{
+  for (int i = 0; i < SIZE; i++)
+    cout << values[i] << " ";
+  cout << endl;
+}
+
+void bubSort(int values[], int SIZE)
+{
+	cout << "\nNow performing the bubble sort\n";
+	cout << "----------------------------------------------\n";
+	int temp;
+	bool swap;
+	int passes = 0;
+
+  	do 
+  	{
+    	swap = false;
+    	for (int i = 0; i < (SIZE - 1); i++)
+    	{
+      		if (values[i] > values[i+1])
+      		{
+        		temp = values[i];
+        		values[i] = values[i+1];
+        		values[i+1] = temp;
+        		swap = true;
+        		passes += 1;
+        		cout << "After pass " << passes << ": ";
+        		showArray(values, 8);
+      		}
+    	}
+	} while (swap);
+}
+
+void selSort(int second_values[], int SIZE)
+{
+	cout << "\nNow performing the selection sort\n";
+	cout << "-----------------------------------------------\n";
+	int startScan, minPosition, minValue;
+	int passes = 0;
+	
+	for (startScan = 0; startScan < (SIZE - 1); startScan++)
+	{
+		minPosition = startScan;
+		minValue = second_values[startScan];
+		
+		for (int i = startScan + 1; i < SIZE; i++)
+		{
+			if (second_values[i] < minValue)
+			{
+				minValue = second_values[i];
+				minPosition = i;
+			}
+		}
+		passes += 1;
+		second_values[minPosition] = second_values[startScan];
+		second_values[startScan] = minValue; 
+		cout << "After pass " << passes << ": ";
+		showArray(second_values, 8);
+	}
+}
