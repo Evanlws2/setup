@@ -1,0 +1,61 @@
+// Evan Cammack
+// CISP 360 - B107, MW 4:30-6:20pm
+//Assignment #9 part 1 - Selection/Bubble Sorting
+//************************************************************************************************************
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+void showArray(string [], int);
+void selSort(string [], int);
+
+
+
+int main()
+{
+	const int NUM_NAMES = 20;
+	string names[NUM_NAMES] = {"Collins, Bill", "Smith, Bart", "Allen, Jim","Griffin, Jim", "Stamey, Marty", "Rose, Geri","Taylor, Terri", "Johnson, Jill","Allison,Jeff", "Looney, Joe", "Wolfe, Bill","James, Jean", "Weaver, Jim", "Pore, Bob","Rutherford, Greg", "Javens, Renee","Harrison, Rose", "Setzer, Cathy","Pike, Gordon", "Holland, Beth" };
+	
+	cout << "The unsorted names are: \n";
+	cout << "------------------------------------------\n";
+	showArray(names, 20);
+	
+	cout << "The sorted names are: \n";
+	cout << "------------------------------------------\n";
+	selSort(names, 20);
+	 
+// Insert your code to complete this program
+	return 0;
+}
+
+void showArray(string names[], int NUM_NAMES)
+{
+	for (int i = 0; i < NUM_NAMES; i++)
+		cout << names[i] << endl;
+	cout << endl;
+}
+
+void selSort(string names[], int NUM_NAMES)
+{
+	int startScan, minPosition;
+	string minValue;
+	
+	for (startScan = 0; startScan < (NUM_NAMES - 1); startScan++)
+	{
+		minPosition = startScan;
+		minValue = names[startScan];
+		
+		for (int i = startScan + 1; i < NUM_NAMES; i++)
+		{
+			if ( names[i] < minValue)
+			{
+				minValue = names[i];
+				minPosition = i;
+			}
+		}
+		names[minPosition] = names[startScan];
+		names[startScan] = minValue;
+	}
+	showArray(names, 20); 
+}
