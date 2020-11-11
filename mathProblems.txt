@@ -1,0 +1,113 @@
+#include <iostream>
+#include <random>
+#include <iomanip>
+
+using namespace std;
+
+void addition_prob();
+void subtraction_prob();
+void multiplication_prob();
+void division_prob();
+int get_rand_num();
+//void output_result();
+
+
+int main()
+{
+
+	int user_choice;
+	do
+	{
+		cout << "\tMath Tutor Menu\n";
+		cout << "-------------------------------------------\n";
+		cout << "1. Addition Problem\n";
+		cout << "2. Subtraction Problem\n";
+		cout << "3. Multiplication Problem\n";
+		cout << "4. Division Problem\n";
+		cout << "5. Quit this problem\n";
+		cout << "-------------------------------------------\n";
+		cout << "Enter your choice (1-5): ";
+		cin >> user_choice;
+  } while (user_choice < 1 || user_choice > 5);
+		{
+      cout << "Invalid Choice! Please enter a number 1-5: ";
+		  cin >> user_choice;
+	  } if (user_choice == 1)
+      addition_prob();
+      else if (user_choice == 2)
+      subtraction_prob();
+      else if (user_choice == 3)
+      multiplication_prob();
+      else if (user_choice == 4)
+      division_prob();
+}
+
+void addition_prob()
+{
+	double user_ans;
+	double num1 = get_rand_num();
+	double num2 = get_rand_num();
+	double correct_ans = num1 + num2;
+	cout << num1 << endl;
+	cout << setw(8) << " + " << num2;
+	cout << "\n--------" << endl;
+	cin >> user_ans;
+	if (user_ans == correct_ans)
+		cout << "Congratulations! That's right.";
+	else cout << "Sorry, the correct answer is " << correct_ans << ".";
+
+}
+
+void subtraction_prob()
+{
+	double user_ans;
+	double num1 = get_rand_num();
+	double num2 = get_rand_num();
+	double correct_ans = num1 - num2;
+	cout << num1 << endl;
+	cout << setw(8) << " - " << num2;
+	cout << "\n--------" << endl;
+	cin >> user_ans;
+	if (user_ans == correct_ans)
+		cout << "Congratulations! That's right.";
+	else cout << "Sorry, the correct answer is " << correct_ans << ".";
+}
+
+void multiplication_prob()
+{
+	double user_ans;
+	double num1 = get_rand_num();
+	double num2 = get_rand_num();
+	double correct_ans = num1 * num2;
+	cout << num1 << " * " << num2 << " = ";
+	cin >> user_ans;
+	if (user_ans == correct_ans)
+		cout << "Congratulations! That's right.";
+	else cout << "Sorry, the correct answer is " << correct_ans << ".";
+}
+
+void division_prob()
+{
+	double user_ans;
+	double num1 = get_rand_num();
+	double num2 = get_rand_num();
+	double correct_ans = num1 / num2;
+	cout << num1 << " / " << num2 << " = ";
+	cin >> user_ans;
+	if (user_ans == correct_ans)
+		cout << "Congratulations! That's right.";
+	else cout << "Sorry, the correct answer is " << correct_ans << ".";
+}
+
+int get_rand_num()
+{
+	random_device any;
+	return any() % 1000;
+}
+
+/*void output_result()
+{
+	if (user_ans == correct_ans)
+		cout << "Congratulations! That's right.";
+	else cout << "Sorry, the correct answer is " << correct_ans << ".";
+}*/
